@@ -1,4 +1,4 @@
-import {test} from "@playwright/test";
+import {test,expect} from "@playwright/test";
 import { TaskModel } from './fixtures/task.model';
 import { deleteTaskByHelper, postTask } from './support/helpers';
 import { TasksPage } from "./support/pages/tasks";
@@ -14,13 +14,14 @@ test("deve fornecer uma nova tarefa", async ({ page, request, }) => {
    
     await deleteTaskByHelper(request, task.name)
 
-    await page.goto("http://192.168.1.2:3000/");
+    
    
    const taskPage: TasksPage = new TasksPage(page);
 
-   taskPage.create(task); // cria uma tarefa
-   
-    const target = page.locator('css=.task-item p >> text=${task.name}');
+   await taskPage.create(task); // cria uma tarefa
+   await taskPage.shouldHaveTask(task.name); // verifica se a tarefa foi criada
+   await taskPage.alerthaveText('Task already exists'); // verifica se a mensagem de erro foi exibida
+    
     
 });
 
