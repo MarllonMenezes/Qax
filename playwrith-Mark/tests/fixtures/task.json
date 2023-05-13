@@ -1,0 +1,24 @@
+{
+    "success":{
+        "name": "Ler um livro de typescript",
+        "is_done": false
+    },
+
+    "duplicate":{
+        "name": "comprar katchup",
+        "is_done": false
+
+    },
+
+    "required":{
+        "name": "",
+        "is_done": false
+
+    },
+
+    "update": {
+        "name": "pagar a fatura de cartão de crédito",
+        "is_done": false
+    }
+}
+
